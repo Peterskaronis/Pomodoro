@@ -1,0 +1,97 @@
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.timer {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.controls button, .mode button {
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.controls button:hover, .mode button:hover {
+    background-color: #45a049;
+}
+
+.mode {
+    margin-top: 1rem;
+}
+
+.mode button {
+    background-color: #808080;
+}
+
+.mode button.active {
+    background-color: #4CAF50;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Start button */
+#start {
+    background-color: #4CAF50;  /* Green */
+    color: white;
+}
+
+#start:hover {
+    background-color: #45a049;
+}
+
+/* Reset button */
+#reset {
+    background-color: #f44336;  /* Red */
+    color: white;
+}
+
+#reset:hover {
+    background-color: #da190b;
+}
+
+/* Work/Break mode buttons */
+#work, #break {
+    background-color: #2196F3;  /* Blue */
+    color: white;
+    opacity: 0.7;
+}
+
+#work:hover, #break:hover {
+    opacity: 0.9;
+}
+
+/* Active state for mode buttons */
+#work.active, #break.active {
+    opacity: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+} 
