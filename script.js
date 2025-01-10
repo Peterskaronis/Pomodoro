@@ -99,7 +99,7 @@ resetButton.addEventListener('click', () => {
     updateTitle('25:00');
     resetProgress();
     lofiAudio.pause();
-    musicText.textContent = 'Play Music';
+    toggleMusicBtn.querySelector('.music-icon').textContent = '▶️';
 });
 
 workButton.addEventListener('click', () => {
@@ -150,7 +150,7 @@ function startTimer() {
     startButton.textContent = 'Pause';
     if (lofiAudio.paused) {
         lofiAudio.play();
-        musicText.textContent = 'Pause Music';
+        toggleMusicBtn.querySelector('.music-icon').textContent = '⏸️';
     }
     interval = setInterval(() => {
         timeLeft--;
@@ -161,7 +161,7 @@ function startTimer() {
             isRunning = false;
             startButton.textContent = 'Start';
             lofiAudio.pause();
-            musicText.textContent = 'Play Music';
+            toggleMusicBtn.querySelector('.music-icon').textContent = '▶️';
             alert('Time is up!');
         }
     }, 1000);
@@ -219,10 +219,10 @@ function updateQuote(mode) {
 toggleMusicBtn.addEventListener('click', () => {
     if (lofiAudio.paused) {
         lofiAudio.play();
-        musicText.textContent = 'Pause Music';
+        toggleMusicBtn.querySelector('.music-icon').textContent = '⏸️';
     } else {
         lofiAudio.pause();
-        musicText.textContent = 'Play Music';
+        toggleMusicBtn.querySelector('.music-icon').textContent = '▶️';
     }
 });
 

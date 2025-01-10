@@ -11,10 +11,18 @@
 </head>
 <body>
     <div class="container">
-        <div class="theme-toggle">
-            <button id="themeToggle">
-                <span class="theme-icon">☀️</span>
-            </button>
+        <div class="top-controls">
+            <div class="theme-toggle">
+                <button id="themeToggle">
+                    <span class="theme-icon">☀️</span>
+                </button>
+            </div>
+            <div class="music-controls">
+                <button id="toggleMusic">
+                    <span class="music-icon">▶️</span>
+                </button>
+                <input type="range" id="volumeSlider" min="0" max="100" value="50">
+            </div>
         </div>
         <h1>Focus Time</h1>
         <div class="timer-container">
@@ -61,13 +69,6 @@
     <audio id="alarm">
         <source src="sounds/alarm.mp3" type="audio/mp3">
     </audio>
-    <div class="music-controls">
-        <button id="toggleMusic">
-            <span class="music-icon">🎵</span>
-            <span class="music-text">Play Music</span>
-        </button>
-        <input type="range" id="volumeSlider" min="0" max="100" value="50">
-    </div>
     <script src="script.js"></script>
 </body>
 </html> 

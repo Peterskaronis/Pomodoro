@@ -33,7 +33,7 @@ body {
 }
 
 .timer {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: bold;
     margin: 2rem 0;
 }
@@ -113,10 +113,10 @@ button {
 }
 
 .quote-container {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     padding: 0.75rem;
     text-align: center;
-    max-width: 500px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -223,38 +223,81 @@ blockquote::before {
     background-color: #45a049;
 }
 
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
 .music-controls {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 #toggleMusic {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#toggleMusic .music-icon {
+    font-size: 1.2rem;
+    color: #4CAF50;  /* Green color */
+    filter: hue-rotate(85deg) saturate(80%);  /* Adjust the hue to make emoji green */
 }
 
 #toggleMusic:hover {
-    background: #45a049;
+    background-color: rgba(76, 175, 80, 0.1);  /* Light green background on hover */
+}
+
+/* Dark theme adjustments */
+.dark-theme #toggleMusic .music-icon {
+    color: #45a049;  /* Slightly darker green for dark theme */
+    filter: hue-rotate(85deg) saturate(80%) brightness(0.9);  /* Adjusted for dark theme */
+}
+
+.dark-theme #toggleMusic:hover {
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+.music-icon {
+    font-size: 1.2rem;
+    color: #4CAF50;  /* Green color */
 }
 
 #volumeSlider {
-    width: 100px;
-    cursor: pointer;
+    width: 80px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .top-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .music-controls {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    #toggleMusic {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    #volumeSlider {
+        width: 60px;
+    }
 }
 
 .theme-toggle {
@@ -341,14 +384,14 @@ body.dark-theme {
     }
 
     .timer-container {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
         margin: 1rem auto;
-        padding: 15px;
+        padding: 10px;
     }
 
     .timer {
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 
     .controls {
@@ -420,14 +463,14 @@ body.dark-theme {
     }
 
     .timer-container {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         margin: 0.75rem auto;
         padding: 10px;
     }
 
     .timer {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     h1 {
@@ -472,12 +515,12 @@ body.dark-theme {
     }
 
     .timer-container {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
     }
 
     .timer {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .controls, .mode {
@@ -496,10 +539,10 @@ body.dark-theme {
 
 .timer-container {
     position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 2rem auto;
-    padding: 20px;
+    width: 250px;
+    height: 250px;
+    margin: 1.5rem auto;
+    padding: 15px;
 }
 
 .circular-progress {
@@ -516,7 +559,7 @@ body.dark-theme {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: bold;
     z-index: 1;
 }
@@ -541,32 +584,83 @@ body.dark-theme {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .timer-container {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
 
     .timer {
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 
     .progress-ring {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
 }
 
 @media (max-width: 480px) {
     .timer-container {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     .timer {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .progress-ring {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
+}
+
+.dark-theme #toggleMusic:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark theme adjustments */
+.dark-theme blockquote {
+    background: #3d3d3d;
+    border-left-color: #4a90e2;
+}
+
+.dark-theme .quote {
+    color: #ddd;
+}
+
+.dark-theme blockquote footer {
+    color: #aaa;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .quote-container {
+        padding: 0.5rem;
+    }
+
+    blockquote {
+        padding: 1.25rem 1.75rem;
+    }
+
+    .quote {
+        font-size: 0.9rem;
+        min-height: 50px;
+    }
+
+    blockquote::before {
+        font-size: 2.5rem;
+    }
+}
+
+/* Dark theme adjustments */
+.dark-theme #toggleMusic {
+    color: #45a049;  /* Slightly darker green for dark theme */
+}
+
+.dark-theme #toggleMusic:hover {
+    background-color: rgba(76, 175, 80, 0.2);  /* Adjusted hover for dark theme */
+}
+
+.dark-theme .music-icon {
+    color: #45a049;  /* Slightly darker green for dark theme */
 } 
