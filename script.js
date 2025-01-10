@@ -35,6 +35,18 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.theme-icon');
 let isDarkTheme = false;
 
+const circle = document.querySelector('.progress-ring__circle');
+const radius = circle.r.baseVal.value;
+const circumference = radius * 2 * Math.PI;
+
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = circumference;
+
+function setProgress(percent) {
+    const offset = circumference - (percent / 100 * circumference);
+    circle.style.strokeDashoffset = offset;
+}
+
 function updateTitle(timeString) {
     const taskPrefix = currentTask ? `${currentTask} - ` : '';
     document.title = `${taskPrefix}${timeString} - Focus Time`;
@@ -47,13 +59,19 @@ function updateTimer() {
     seconds.textContent = secondsValue.toString().padStart(2, '0');
     const timeString = `${minutesValue.toString().padStart(2, '0')}:${secondsValue.toString().padStart(2, '0')}`;
     updateTitle(timeString);
+
+    const totalTime = workButton.classList.contains('active') ? workTime : breakTime;
+    const progress = ((totalTime - timeLeft) / totalTime) * 100;
+    setProgress(progress);
 }
 
 startButton.addEventListener('click', () => {
     if (isRunning) {
         clearInterval(interval);
-        startButton.textContent = 'Start';
+        startButton.textContent = 'Resume';
         isRunning = false;
+        lofiAudio.pause();
+        musicText.textContent = 'Play Music';
     } else {
         if (timeLeft === workTime) {
             taskModal.style.display = 'block';
@@ -79,6 +97,9 @@ resetButton.addEventListener('click', () => {
     startButton.textContent = 'Start';
     currentTask = '';
     updateTitle('25:00');
+    resetProgress();
+    lofiAudio.pause();
+    musicText.textContent = 'Play Music';
 });
 
 workButton.addEventListener('click', () => {
@@ -127,6 +148,10 @@ window.addEventListener('click', (e) => {
 function startTimer() {
     isRunning = true;
     startButton.textContent = 'Pause';
+    if (lofiAudio.paused) {
+        lofiAudio.play();
+        musicText.textContent = 'Pause Music';
+    }
     interval = setInterval(() => {
         timeLeft--;
         updateTimer();
@@ -135,6 +160,8 @@ function startTimer() {
             alarmAudio.play();
             isRunning = false;
             startButton.textContent = 'Start';
+            lofiAudio.pause();
+            musicText.textContent = 'Play Music';
             alert('Time is up!');
         }
     }, 1000);
@@ -215,4 +242,8 @@ function toggleTheme() {
     localStorage.setItem('darkTheme', isDarkTheme);
 }
 
-themeToggle.addEventListener('click', toggleTheme); 
+themeToggle.addEventListener('click', toggleTheme);
+
+function resetProgress() {
+    setProgress(0);
+} 
