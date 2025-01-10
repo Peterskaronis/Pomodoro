@@ -235,6 +235,7 @@ blockquote::before {
     display: flex;
     align-items: center;
     gap: 10px;
+    position: static !important;
 }
 
 #toggleMusic {
@@ -279,7 +280,7 @@ blockquote::before {
 }
 
 /* Mobile adjustments */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .top-controls {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -288,6 +289,12 @@ blockquote::before {
     .music-controls {
         flex: 1;
         justify-content: flex-end;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        bottom: auto;
+        right: auto;
+        position: static !important;
     }
 
     #toggleMusic {
@@ -433,26 +440,19 @@ body.dark-theme {
 
     /* Adjust music controls for better mobile placement */
     .music-controls {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 8px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        max-width: 120px;
+        position: static; /* Remove fixed positioning */
+        background: none;
+        box-shadow: none;
+        padding: 0;
     }
 
     #toggleMusic {
         font-size: 0.8rem;
-        padding: 6px 10px;
+        padding: 6px;
     }
 
     #volumeSlider {
-        width: 100%;
+        width: 60px;
     }
 }
 
@@ -494,8 +494,7 @@ body.dark-theme {
 
     /* Make music controls more compact */
     .music-controls {
-        max-width: 100px;
-        padding: 6px;
+        gap: 5px;
     }
 
     .music-icon {
@@ -504,6 +503,10 @@ body.dark-theme {
 
     .music-text {
         font-size: 0.75rem;
+    }
+
+    #volumeSlider {
+        width: 50px;
     }
 }
 
@@ -664,39 +667,3 @@ body.dark-theme {
 .dark-theme .music-icon {
     color: #45a049;  /* Slightly darker green for dark theme */
 }
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .top-controls {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .music-controls {
-        flex: 1;
-        justify-content: flex-end;
-        position: static; /* Remove fixed positioning */
-        background: none;
-        box-shadow: none;
-        padding: 0;
-    }
-
-    #volumeSlider {
-        width: 60px;
-    }
-
-    #toggleMusic {
-        padding: 6px;
-    }
-}
-
-/* Additional optimizations for very small screens */
-@media (max-width: 480px) {
-    .music-controls {
-        gap: 5px;
-    }
-
-    #volumeSlider {
-        width: 50px;
-    }
-} 
