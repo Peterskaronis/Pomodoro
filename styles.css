@@ -663,4 +663,40 @@ body.dark-theme {
 
 .dark-theme .music-icon {
     color: #45a049;  /* Slightly darker green for dark theme */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .top-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .music-controls {
+        flex: 1;
+        justify-content: flex-end;
+        position: static; /* Remove fixed positioning */
+        background: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    #volumeSlider {
+        width: 60px;
+    }
+
+    #toggleMusic {
+        padding: 6px;
+    }
+}
+
+/* Additional optimizations for very small screens */
+@media (max-width: 480px) {
+    .music-controls {
+        gap: 5px;
+    }
+
+    #volumeSlider {
+        width: 50px;
+    }
 } 
