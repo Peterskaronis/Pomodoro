@@ -11,6 +11,11 @@
 </head>
 <body>
     <div class="container">
+        <div class="theme-toggle">
+            <button id="themeToggle">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
         <h1>Focus Time</h1>
         <div class="timer">
             <span id="minutes">25</span>:<span id="seconds">00</span>
@@ -23,6 +28,32 @@
             <button id="work" class="active">Work</button>
             <button id="break">Break</button>
         </div>
+        <div class="quote-container">
+            <blockquote>
+                <p id="quote" class="quote"></p>
+                <footer>― Alan Watts</footer>
+            </blockquote>
+        </div>
+    </div>
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <h2>What are you focusing on?</h2>
+            <input type="text" id="taskInput" placeholder="Enter your task...">
+            <button id="submitTask">Start Focus Session</button>
+        </div>
+    </div>
+    <audio id="lofi" loop>
+        <source src="sounds/lofi.mp3" type="audio/mp3">
+    </audio>
+    <audio id="alarm">
+        <source src="sounds/alarm.mp3" type="audio/mp3">
+    </audio>
+    <div class="music-controls">
+        <button id="toggleMusic">
+            <span class="music-icon">🎵</span>
+            <span class="music-text">Play Music</span>
+        </button>
+        <input type="range" id="volumeSlider" min="0" max="100" value="50">
     </div>
     <script src="script.js"></script>
 </body>
